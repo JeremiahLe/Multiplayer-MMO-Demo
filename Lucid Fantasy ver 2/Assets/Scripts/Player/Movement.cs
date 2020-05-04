@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviourPun
 {
     public static bool playerFacingRight = true;
 
@@ -16,6 +18,14 @@ public class Movement : MonoBehaviour
     }
 
     void Update()
+    {
+        if (photonView.IsMine)
+        {
+            TakeInput();
+        }
+    }
+
+    private void TakeInput()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");

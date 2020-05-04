@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class AttackScript : MonoBehaviour
+public class AttackScript : MonoBehaviourPun
 {
     public GameObject attackProjectile;
     public Transform target;
@@ -10,7 +11,7 @@ public class AttackScript : MonoBehaviour
 
     public Vector2 projectileVelocity;
 
-    public Camera cam;
+    //public Camera cam;
 
     public float resetAttackTimer = Stats.playerAtkSpeed;
 
@@ -30,36 +31,38 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetShoot = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
-
-        Vector3 difference = targetShoot - transform.position;
-        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-
-        if (canAttack)
+        if (photonView.IsMine)
         {
-            if (Input.GetButton("Fire1"))
+            targetShoot = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+
+            Vector3 difference = targetShoot - transform.position;
+            float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+            if (canAttack)
             {
-                shooting = true;
-                float distance = difference.magnitude;
-                Vector2 direction = difference / distance;
-                direction.Normalize();
-                FireProjectile(direction, rotationZ);
-                canAttack = false;
+                if (Input.GetButton("Fire1"))
+                {
+                    shooting = true;
+                    float distance = difference.magnitude;
+                    Vector2 direction = difference / distance;
+                    direction.Normalize();
+                    FireProjectile(direction, rotationZ);
+                    canAttack = false;
+                }
+                else
+                {
+                    shooting = false;
+                }
             }
             else
             {
-                shooting = false;
+                resetAttackTimer -= Time.deltaTime;
+                if (resetAttackTimer <= 0)
+                {
+                    canAttack = true;
+                    resetAttackTimer = Stats.playerAtkSpeed;
+                }
             }
-        }
-        else
-        {
-            resetAttackTimer -= Time.deltaTime;
-            if (resetAttackTimer <= 0)
-            {
-                canAttack = true;
-                resetAttackTimer = Stats.playerAtkSpeed;
-            }
-
         }
     }
 

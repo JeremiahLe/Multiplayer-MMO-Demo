@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
             findOpponentPanel.SetActive(false);
             waitingStatusPanel.SetActive(true);
 
-            waitingStatusText.text = "Searching...";
+            waitingStatusText.text = "Connecting...";
 
             if (PhotonNetwork.IsConnected)
             {
@@ -74,7 +74,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("No clients are waiting for an opponent, creating a new room");
+        Debug.Log("No clients are waiting for players, creating a new room");
 
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = MaxPlayersPerRoom });
     }
@@ -87,12 +87,12 @@ public class MainMenu : MonoBehaviourPunCallbacks
 
         if(playerCount != MaxPlayersPerRoom)
         {
-            waitingStatusText.text = "Waiting For Opponent";
-            Debug.Log("Client is waiting for an opoonent");
+            waitingStatusText.text = "Connected...";
+            Debug.Log("Client is waiting for an opponent");
         }
         else
         {
-            waitingStatusText.text = "Opponent Found";
+            waitingStatusText.text = "Joining game...";
             Debug.Log("Match is ready to begin");
         }
     }
@@ -103,7 +103,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
 
-            waitingStatusText.text = "Opponent found";
+            waitingStatusText.text = "Joining game...";
             Debug.Log("Match is ready to begin");
 
             PhotonNetwork.LoadLevel("TestZone");

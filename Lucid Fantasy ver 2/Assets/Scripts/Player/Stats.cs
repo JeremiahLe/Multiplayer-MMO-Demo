@@ -20,8 +20,8 @@ public class Stats : MonoBehaviour
     public static float playerAtkSpeed = .3f;
 
     // Movement related variables
-    public static float playerWalkSpeed = 6f;
-    public static float playerRunSpeed = 8.5f;
+    public static float playerWalkSpeed = 17f;
+    public static float playerRunSpeed = 22f;
 
     // Start is called before the first frame update
     void Start()
