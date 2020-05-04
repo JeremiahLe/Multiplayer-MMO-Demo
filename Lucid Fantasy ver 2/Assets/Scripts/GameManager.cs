@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using System;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPun
 {
     public string username;
+
+    public GameObject systemsManager;
 
     public int maxMessages = 25;
 
@@ -14,23 +18,36 @@ public class GameManager : MonoBehaviour
 
     public Color playerMessage, info;
 
+    public bool cantMove = false;
+
     [SerializeField]
     List<Message> messageList = new List<Message>();
 
-    void Start()
+    private void Awake()
     {
-        
+        systemsManager = GameObject.FindGameObjectWithTag("SystemsManager");
+        username = systemsManager.GetComponent<NameTransfer>().playerName;
+    }
+
+    private void SetName()
+    {
+        //username = photonView.Owner.NickName;
     }
 
     void Update()
     {
-        if(chatBox.text != "")
+        //username = photonView.Owner.NickName;
+
+        if (chatBox.text != "")
         {
+            cantMove = true;
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                SendMessageToChat(username + ": " +chatBox.text, Message.MessageType.playerMessage);
+                //SendMessageToChat(username + ": " +chatBox.text, Message.MessageType.playerMessage);
+                photonView.RPC("SendMessageToChat", RpcTarget.All, username + ": " + chatBox.text, Message.MessageType.playerMessage);
                 chatBox.text = "";
                 Debug.Log("Sent a message");
+                cantMove = false;
             }
         }
         else
@@ -38,6 +55,7 @@ public class GameManager : MonoBehaviour
             if (!chatBox.isFocused && Input.GetKeyDown(KeyCode.Return))
                 chatBox.ActivateInputField();
 
+            cantMove = false;
         }
 
         if(!chatBox.isFocused)
@@ -51,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    [PunRPC]
     public void SendMessageToChat(string text, Message.MessageType messageType)
     {
         if (messageList.Count >= maxMessages)

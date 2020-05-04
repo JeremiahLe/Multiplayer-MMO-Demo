@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using System;
 
@@ -11,6 +12,10 @@ public class Movement : MonoBehaviourPun
     public Rigidbody2D rb;
 
     Vector2 movement;
+
+    public GameObject inputField;
+
+    bool canMove = true;
 
     void Start()
     {
@@ -23,12 +28,27 @@ public class Movement : MonoBehaviourPun
         {
             TakeInput();
         }
+
+        /*
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (canMove == true)
+            {
+                canMove = false;
+            }
+            else
+                canMove = true;
+        }
+        */
     }
 
     private void TakeInput()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (canMove)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
     }
 
     void FixedUpdate()

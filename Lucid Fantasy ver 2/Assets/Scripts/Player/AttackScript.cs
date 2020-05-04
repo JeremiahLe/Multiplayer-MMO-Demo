@@ -49,6 +49,7 @@ public class AttackScript : MonoBehaviourPun
                     Vector2 direction = difference / distance;
                     direction.Normalize();
                     photonView.RPC("FireProjectile", RpcTarget.All, direction, rotationZ);
+                    Debug.Log("Fired a projectile!");
                     canAttack = false;
                 }
                 else

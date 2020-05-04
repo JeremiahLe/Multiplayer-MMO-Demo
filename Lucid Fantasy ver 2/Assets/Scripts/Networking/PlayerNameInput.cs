@@ -8,6 +8,7 @@ public class PlayerNameInput : MonoBehaviour
 {
     [SerializeField] private InputField nameInputField = null;
     [SerializeField] private Button continueButton = null;
+    [SerializeField] private GameObject systemsManager = null;
 
     private const string PlayerPrefsNameKey = "PlayerName";
 
@@ -40,5 +41,7 @@ public class PlayerNameInput : MonoBehaviour
         PlayerPrefs.SetString(PlayerPrefsNameKey, playerName);
 
         SearchOn = true;
+
+        systemsManager.GetComponent<NameTransfer>().playerName = playerName;
     }
 }

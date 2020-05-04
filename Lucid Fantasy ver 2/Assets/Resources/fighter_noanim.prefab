@@ -339,6 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1876798997183298177}
+  inputField: {fileID: 8715091761741303745, guid: 997ffad48d5b4274db265ee1113d9421,
+    type: 3}
 --- !u!114 &9096231353964387508
 MonoBehaviour:
   m_ObjectHideFlags: 0
