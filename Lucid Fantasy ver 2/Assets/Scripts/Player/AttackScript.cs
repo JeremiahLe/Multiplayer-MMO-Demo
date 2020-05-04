@@ -11,6 +11,8 @@ public class AttackScript : MonoBehaviourPun
 
     public Vector2 projectileVelocity;
 
+    [SerializeField] private GameObject projectile = null;
+
     //public Camera cam;
 
     public float resetAttackTimer = Stats.playerAtkSpeed;
@@ -46,7 +48,7 @@ public class AttackScript : MonoBehaviourPun
                     float distance = difference.magnitude;
                     Vector2 direction = difference / distance;
                     direction.Normalize();
-                    FireProjectile(direction, rotationZ);
+                    photonView.RPC("FireProjectile", RpcTarget.All, direction, rotationZ);
                     canAttack = false;
                 }
                 else
@@ -66,9 +68,12 @@ public class AttackScript : MonoBehaviourPun
         }
     }
 
+    [PunRPC]
     void FireProjectile(Vector2 direction, float rotationZ)
     {
         GameObject projectile = Instantiate(attackProjectile) as GameObject;
+
+        //PhotonNetwork.Instantiate(projectile.name, target.position, Quaternion.Euler(0.0f, 0.0f, rotationZ));
 
         projectile.transform.position = target.transform.position;
         projectile.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);

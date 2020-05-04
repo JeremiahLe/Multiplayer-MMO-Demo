@@ -48,9 +48,12 @@ public class Movement : MonoBehaviourPun
     // flipping the character's sprite
     public void Flip()
     {
+        /*
         playerFacingRight = !playerFacingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+        */
     }
+    
 }

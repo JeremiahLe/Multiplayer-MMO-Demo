@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ProjectileScript : MonoBehaviour
+public class ProjectileScript : MonoBehaviourPun
 {
     public float projectileLifespan = 0;
     public float damage;
@@ -22,6 +23,7 @@ public class ProjectileScript : MonoBehaviour
         if (projectileLifespan <= 0)
         {
             Destroy(gameObject);
+            
         }
     }
 

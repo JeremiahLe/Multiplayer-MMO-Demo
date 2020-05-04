@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
         private bool isConnecting = false;
 
         private const string GameVersion = "0.1";
-        private const int MaxPlayersPerRoom = 2;
+        private const int MaxPlayersPerRoom = 4;
 
         private void Awake() => PhotonNetwork.AutomaticallySyncScene = true;
 

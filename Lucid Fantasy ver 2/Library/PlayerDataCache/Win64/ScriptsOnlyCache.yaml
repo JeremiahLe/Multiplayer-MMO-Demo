@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - MainMenu
     - Movement
     - PlayerNameInput
+    - PlayerNameTag
     - PlayerSpawner
     - ProjectileScript
     - Stats
@@ -150,6 +151,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10936}
     - Class: 114
       Script: {instanceID: 11008}
+    - Class: 114
+      Script: {instanceID: 31102}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -214,6 +217,10 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9274}
     - Class: 114
+      Script: {instanceID: 9388}
+    - Class: 114
+      Script: {instanceID: 9446}
+    - Class: 114
       Script: {instanceID: 9772}
     - Class: 114
       Script: {instanceID: 9812}
@@ -225,13 +232,23 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10936}
     - Class: 114
       Script: {instanceID: 15300}
+    - Class: 114
+      Script: {instanceID: 31102}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -266,7 +283,7 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: 5079dd2aeaf798e143229f93f826a2a3
+      Hash: 4b7545f83d4b1431a55ee6d9ac0eaa67
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AttackScript
@@ -1806,6 +1823,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: b6ee4ab12df6b5534e3c5052dd794176
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerNameTag
   platform: 19
   scenePathNames:
   - Assets/Scenes/LoginScreen.unity
