@@ -31,7 +31,8 @@ public class MainMenu : MonoBehaviourPunCallbacks
 
             if (PhotonNetwork.IsConnected)
             {
-                PhotonNetwork.JoinRandomRoom();
+                //PhotonNetwork.JoinRandomRoom();
+                PhotonNetwork.JoinRoom("room1");
             }
             else
             {
@@ -76,7 +77,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
     {
         Debug.Log("No clients are waiting for players, creating a new room");
 
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = MaxPlayersPerRoom });
+        PhotonNetwork.CreateRoom("room1", new RoomOptions { MaxPlayers = MaxPlayersPerRoom });
     }
 
     public override void OnJoinedRoom()
@@ -87,21 +88,23 @@ public class MainMenu : MonoBehaviourPunCallbacks
 
         if(playerCount != MaxPlayersPerRoom)
         {
-            waitingStatusText.text = "Connected...";
-            Debug.Log("Client is waiting for an opponent");
-        }
-        else
-        {
+            //waitingStatusText.text = "Connected...";
+            //Debug.Log("Client is waiting for an opponent");
+        //}
+        //else
+        //{
             waitingStatusText.text = "Joining game...";
             Debug.Log("Match is ready to begin");
+
+            PhotonNetwork.LoadLevel("TestZone");
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        if(PhotonNetwork.CurrentRoom.PlayerCount == MaxPlayersPerRoom)
+        if(PhotonNetwork.CurrentRoom.PlayerCount < MaxPlayersPerRoom)
         {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
+            //PhotonNetwork.CurrentRoom.IsOpen = false;
 
             waitingStatusText.text = "Joining game...";
             Debug.Log("Match is ready to begin");
