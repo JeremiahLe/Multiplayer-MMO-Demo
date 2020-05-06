@@ -6,9 +6,15 @@ using Photon.Pun;
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab = null;
+    [SerializeField] private GameObject healthBar = null;
 
     // Start is called before the first frame update
-    private void Start() => PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+    private void Start()
+    {
+        PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate(healthBar.name, Vector3.zero, Quaternion.identity);
+    }
+
 
     // Update is called once per frame
     void Update()

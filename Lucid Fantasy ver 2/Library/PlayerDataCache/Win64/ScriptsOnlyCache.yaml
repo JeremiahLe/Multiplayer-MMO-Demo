@@ -3,7 +3,9 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AttackScript
     - CameraScript
+    - ClassTransfer
     - GameManager
+    - HealthBarScript
     - Interactable
     - MainMenu
     - Movement
@@ -32,8 +34,12 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationBlendTree.Node
+    - UnityEditor.Graphs.AnimationStateMachine.AnimatorStateTransitionInspector
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -124,6 +130,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9436}
     - Class: 114
+      Script: {instanceID: 9442}
+    - Class: 114
       Script: {instanceID: 9444}
     - Class: 114
       Script: {instanceID: 9446}
@@ -140,41 +148,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9772}
     - Class: 114
-      Script: {instanceID: 9914}
+      Script: {instanceID: 9810}
     - Class: 114
-      Script: {instanceID: 10054}
+      Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 10118}
+      Script: {instanceID: 9984}
     - Class: 114
-      Script: {instanceID: 10124}
+      Script: {instanceID: 10058}
     - Class: 114
-      Script: {instanceID: 10214}
+      Script: {instanceID: 10122}
     - Class: 114
-      Script: {instanceID: 10256}
+      Script: {instanceID: 10128}
     - Class: 114
-      Script: {instanceID: 10308}
+      Script: {instanceID: 10218}
     - Class: 114
-      Script: {instanceID: 10314}
+      Script: {instanceID: 10248}
     - Class: 114
-      Script: {instanceID: 10360}
+      Script: {instanceID: 10262}
     - Class: 114
-      Script: {instanceID: 10496}
+      Script: {instanceID: 10298}
     - Class: 114
-      Script: {instanceID: 10504}
+      Script: {instanceID: 10316}
     - Class: 114
-      Script: {instanceID: 10508}
+      Script: {instanceID: 10324}
     - Class: 114
-      Script: {instanceID: 10676}
+      Script: {instanceID: 10370}
     - Class: 114
-      Script: {instanceID: 10936}
+      Script: {instanceID: 10506}
     - Class: 114
-      Script: {instanceID: 11008}
+      Script: {instanceID: 10514}
     - Class: 114
-      Script: {instanceID: 31102}
+      Script: {instanceID: 10518}
     - Class: 114
-      Script: {instanceID: 35582}
+      Script: {instanceID: 10686}
     - Class: 114
-      Script: {instanceID: 72780}
+      Script: {instanceID: 10946}
+    - Class: 114
+      Script: {instanceID: 11020}
+    - Class: 114
+      Script: {instanceID: 32768}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -230,7 +242,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -238,6 +256,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9240}
     - Class: 114
       Script: {instanceID: 9274}
+    - Class: 114
+      Script: {instanceID: 9318}
     - Class: 114
       Script: {instanceID: 9388}
     - Class: 114
@@ -257,6 +277,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9436}
     - Class: 114
+      Script: {instanceID: 9442}
+    - Class: 114
       Script: {instanceID: 9444}
     - Class: 114
       Script: {instanceID: 9446}
@@ -265,23 +287,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9772}
     - Class: 114
-      Script: {instanceID: 9812}
+      Script: {instanceID: 9810}
     - Class: 114
-      Script: {instanceID: 10118}
+      Script: {instanceID: 9814}
     - Class: 114
-      Script: {instanceID: 10676}
+      Script: {instanceID: 10122}
     - Class: 114
-      Script: {instanceID: 10936}
+      Script: {instanceID: 10248}
     - Class: 114
-      Script: {instanceID: 15300}
+      Script: {instanceID: 10298}
     - Class: 114
-      Script: {instanceID: 31102}
+      Script: {instanceID: 10320}
     - Class: 114
-      Script: {instanceID: 35582}
+      Script: {instanceID: 10686}
     - Class: 114
-      Script: {instanceID: 67548}
+      Script: {instanceID: 10946}
     - Class: 114
-      Script: {instanceID: 72780}
+      Script: {instanceID: 10948}
+    - Class: 114
+      Script: {instanceID: 32768}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -979,7 +1003,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 85ee04b949714e8efa59e4da36dcaa91
+      Hash: cb353fc92095a8ac1b6caf6fbc0ce585
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Movement
@@ -989,6 +1013,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.dll
     namespaceName: Photon.Pun
     className: PhotonRigidbody2DView
+  - hash:
+      serializedVersion: 2
+      Hash: b6ee4ab12df6b5534e3c5052dd794176
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerNameTag
   - hash:
       serializedVersion: 2
       Hash: 0d85f4fda1e0e70cd92c084d12f05cdc
@@ -1115,6 +1145,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: CurrentRoomIsOpenToggle
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClassTransfer
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -1345,6 +1381,12 @@ ScriptsOnlyBuild:
     className: ToggleExpand
   - hash:
       serializedVersion: 2
+      Hash: 776c1acddd3c4115e7276536100919e4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NameTransfer
+  - hash:
+      serializedVersion: 2
       Hash: c3fc60fc2fb6b3ac86a6b3789bf76db9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1363,6 +1405,12 @@ ScriptsOnlyBuild:
     className: PlayerUI
   - hash:
       serializedVersion: 2
+      Hash: 71b11aab2c5e5757e8acc28f0d4ced62
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
       Hash: 3dbccc5793489caad80e37a33f1d2d30
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
@@ -1379,6 +1427,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
     className: PointedAtGameObjectInfo
+  - hash:
+      serializedVersion: 2
+      Hash: 6ae0d16aced30e9161d5b71935996ef7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerSpawner
   - hash:
       serializedVersion: 2
       Hash: 37b66d97ccef5607e80037acafe51b3b
@@ -1771,6 +1825,12 @@ ScriptsOnlyBuild:
     className: PhotonView
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Interactable
+  - hash:
+      serializedVersion: 2
       Hash: c656dcc13ae391b68d594cc8f9c590b0
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1867,34 +1927,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: d1f07c9e64b7817e6271f80bb03de25f
+      Hash: 1028c39545bcfa841aaab54121e69a47
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerSpawner
-  - hash:
-      serializedVersion: 2
-      Hash: b6ee4ab12df6b5534e3c5052dd794176
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerNameTag
-  - hash:
-      serializedVersion: 2
-      Hash: 71b11aab2c5e5757e8acc28f0d4ced62
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Interactable
-  - hash:
-      serializedVersion: 2
-      Hash: 776c1acddd3c4115e7276536100919e4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NameTransfer
+    className: HealthBarScript
   platform: 19
   scenePathNames:
   - Assets/Scenes/LoginScreen.unity

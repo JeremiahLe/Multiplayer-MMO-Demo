@@ -17,6 +17,10 @@ public class Movement : MonoBehaviourPun
 
     bool canMove = true;
 
+    public Animator animator;
+
+    int scaler = 1;
+
     void Start()
     {
        
@@ -48,6 +52,10 @@ public class Movement : MonoBehaviourPun
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
+
+            animator.SetFloat("horizontal", movement.x);
+            animator.SetFloat("vertical", movement.y);
+            animator.SetFloat("speed", movement.sqrMagnitude);
         }
     }
 
@@ -68,12 +76,12 @@ public class Movement : MonoBehaviourPun
     // flipping the character's sprite
     public void Flip()
     {
-        /*
         playerFacingRight = !playerFacingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
-        */
+        //Vector3 Scaler = transform.localScale;
+        //Scaler.x *= -1;
+        //transform.localScale = Scaler;
+        animator.SetFloat("horizontal", scaler *-1);
+        
     }
     
 }
